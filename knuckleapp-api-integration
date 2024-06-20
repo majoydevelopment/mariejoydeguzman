@@ -1,0 +1,57 @@
+#include <iostream>
+#include <kuncleapp/kuncleapp.h>  // Replace with actual header file path
+
+int main() {
+    // Initialize KuncleApp
+    if (!kuncleapp::initialize("your_api_key")) {
+        std::cerr << "Failed to initialize KuncleApp" << std::endl;
+        return -1;
+    }
+
+    // Create a window
+    kuncleapp::Window window = kuncleapp::createWindow("My Application", 800, 600);
+
+    // Create a button
+    kuncleapp::Button button = kuncleapp::createButton(window, "Click Me", 100, 50);
+    button.setPosition(300, 300);  // Set button position
+
+    // Set button click event
+    button.onClick([]() {
+        std::cout << "Button clicked!" << std::endl;
+    });
+
+    // Create a text box
+    kuncleapp::TextBox textBox = kuncleapp::createTextBox(window, "Enter text here", 400, 50);
+    textBox.setPosition(50, 100);  // Set text box position
+
+    // Create a label
+    kuncleapp::Label label = kuncleapp::createLabel(window, "Status:", 100, 30);
+    label.setPosition(50, 200);  // Set label position
+
+    // Create a checkbox
+    kuncleapp::Checkbox checkbox = kuncleapp::createCheckbox(window, "Enable Feature", 150, 30);
+    checkbox.setPosition(200, 200);  // Set checkbox position
+
+    // Main loop
+    while (window.isOpen()) {
+        kuncleapp::pollEvents();
+
+        // Example of updating label based on checkbox state
+        if (checkbox.isChecked()) {
+            label.setText("Status: Feature Enabled");
+        } else {
+            label.setText("Status: Feature Disabled");
+        }
+
+        // Example of handling text box input
+        std::string inputText = textBox.getText();
+        if (!inputText.empty()) {
+            std::cout << "Text entered: " << inputText << std::endl;
+        }
+    }
+
+    // Clean up
+    kuncleapp::shutdown();
+
+    return 0;
+}
