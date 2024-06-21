@@ -17,7 +17,10 @@ This repository includes two main projects:
    - A simple, clean, and responsive blog website created using HTML, CSS, and JavaScript.
 
 2. **GUI-Based Application of the C++ Program**
-   - A graphical user interface application built to demonstrate the functionalities of a C++ program I have developed.
+   - A graphical user interface application built to demonstrate the functionalities of a C++ program I have developed. 
+
+3. **Console based Application of the C++ Program** 
+   - A non Graphical representation of the code. 
 
 ## Disclaimer
 
