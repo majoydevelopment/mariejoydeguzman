@@ -1,0 +1,112 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function prototypes
+void forLoopExample();
+void whileLoopExample();
+void functionExample();
+int sum(int a, int b);
+void arrayExample();
+void pointerExample();
+void structureExample();
+
+// Structure definition
+struct ExampleStruct {
+    int num;
+    char str[50];
+};
+
+int main() {
+    int choice;
+
+    while (1) {
+        printf("PROGRAM OPTIONS\n");
+        printf("1 - For Loop\n");
+        printf("2 - While Loop\n");
+        printf("3 - Functions\n");
+        printf("4 - Arrays\n");
+        printf("5 - Pointers\n");
+        printf("6 - Structure\n");
+        printf("7 - Exit\n");
+        printf("Enter your option ---> ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                forLoopExample();
+                break;
+            case 2:
+                whileLoopExample();
+                break;
+            case 3:
+                functionExample();
+                break;
+            case 4:
+                arrayExample();
+                break;
+            case 5:
+                pointerExample();
+                break;
+            case 6:
+                structureExample();
+                break;
+            case 7:
+                exit(0);
+            default:
+                printf("Invalid option. Please try again.\n");
+        }
+    }
+
+    return 0;
+}
+
+void forLoopExample() {
+    printf("For Loop Example:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("i = %d\n", i);
+    }
+}
+
+void whileLoopExample() {
+    printf("While Loop Example:\n");
+    int i = 0;
+    while (i < 5) {
+        printf("i = %d\n", i);
+        i++;
+    }
+}
+
+void functionExample() {
+    printf("Function Example:\n");
+    printf("Sum of 3 and 4 is %d\n", sum(3, 4));
+}
+
+int sum(int a, int b) {
+    return a + b;
+}
+
+void arrayExample() {
+    printf("Array Example:\n");
+    int arr[5] = {1, 2, 3, 4, 5};
+    for (int i = 0; i < 5; i++) {
+        printf("arr[%d] = %d\n", i, arr[i]);
+    }
+}
+
+void pointerExample() {
+    printf("Pointer Example:\n");
+    int a = 10;
+    int *p = &a;
+    printf("Value of a is %d\n", a);
+    printf("Value of *p is %d\n", *p);
+    printf("Address of a is %p\n", (void*)&a);
+    printf("Value of p is %p\n", (void*)p);
+}
+
+void structureExample() {
+    printf("Structure Example:\n");
+    struct ExampleStruct example = {10, "Hello, World!"};
+    printf("Number: %d\n", example.num);
+    printf("String: %s\n", example.str);
+}
+
