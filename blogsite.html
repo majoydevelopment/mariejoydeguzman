@@ -3,270 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Blog</title>
+    <title>Albert Lawson Open University </title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-
         header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
+            background: #003366;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
             position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-width: 150px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        .container {
+            flex: 1;
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        .content {
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .content h1 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+        .content p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .highlight {
+            background: #e6ffed;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 5px solid #00c851;
+            margin-top: 1.5rem;
+            font-weight: bold;
+        }
+        .register-button {
+            display: inline-block;
+            background: #00c851;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+        .register-button:hover {
+            background: #007e33;
+            transform: scale(1.05);
+        }
+        footer {
+            background: #003366;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        .cookie-banner {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
         }
-
-        header h1 {
-            margin: 0;
-        }
-
-        header img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
+        .cookie-banner button {
+            background: #00c851;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 14px;
             cursor: pointer;
         }
-
-        .menu-toggle span {
-            height: 3px;
-            width: 25px;
-            background: white;
-            margin: 4px 0;
+        .cookie-banner button:hover {
+            background: #007e33;
         }
-
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        main section {
-            margin-bottom: 20px;
-        }
-
-        main section img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto 20px;
-        }
-
-        .gallery-container {
-            margin-bottom: 40px;
-        }
-
-        .gallery-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .gallery {
+        .testimonials {
             position: relative;
             overflow: hidden;
-            width: 100%;
-            height: 300px; /* Adjust the height as needed */
+            margin-top: 2rem;
+        }
+        .testimonial-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            transition: transform 0.5s ease-in-out;
         }
-
-        .gallery img {
-            position: absolute;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            width: 100%;
-            height: auto;
-            max-height: 100%;
-            object-fit: cover;
+        .testimonial {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 1rem;
+            background: #ffffff;
+            border-left: 5px solid #00c851;
+            border-radius: 8px;
+            margin-right: 1rem;
         }
-
-        .gallery img.active {
-            opacity: 1;
+        .testimonial p {
+            margin: 0;
+            font-style: italic;
         }
-
-        aside {
-            background-color: #f4f4f4;
-            padding: 20px;
-            position: fixed;
-            right: 20px;
-            top: 100px;
-            width: 200px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
+        .carousel-button {
+            background: #003366;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            line-height: 40px;
             text-align: center;
-            padding: 1rem 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
         }
-
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                display: none;
-                width: 100%;
-            }
-
-            nav ul.showing {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            aside {
-                position: static;
-                width: 100%;
-                margin-top: 20px;
-            }
-
-            footer {
-                position: static;
-            }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-left">
-            <img src="https://i.postimg.cc/W49rcH39/FB-IMG-1718800315088.jpg" alt="Logo">
-            <h1>My Personal Blog</h1>
-        </div>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Albert Lawson Open University </h1>
     </header>
-    <main>
-        <section id="home">
-            <h2>Welcome to My Blog</h2>
-            <p>I'm Marie Joy De Guzman, a first-year Network Security student. Join me as I share insights and experiences from my journey in cybersecurity. Thank you for visiting!</p>
-        </section>
-        <section id="about">
-            <h2>About Me</h2>
-            <img src="https://i.postimg.cc/W49rcH39/FB-IMG-1718800315088.jpg" alt="Your Photo">
-            <p>In the field of IT, my experience hasn't been straightforward. It's been characterized by the constant need to learn and adapt to multiple things simultaneously, which is essential for professional growth and staying relevant in a rapidly evolving industry.</p>
-        </section>
-        <section id="gallery" class="gallery-container">
-            <h2 class="gallery-title">Gallery</h2>
-            <div class="gallery">
-                <img src="https://i.postimg.cc/W49rcH39/FB-IMG-1718800315088.jpg" alt="Gallery Image 1" class="active">
-                <img src="https://i.postimg.cc/rmmNzYwH/FB-IMG-1718811956174.jpg" alt="Gallery Image 2">
-                <img src="https://i.postimg.cc/wvGcNctj/FB-IMG-1718643756142.jpg" alt="Gallery Image 3">
-            </div>
-        </section>
-        <section id="blog">
-            <h2>Blog Posts</h2>
-            <article>
-                <h3>Understanding the Fundamentals of Cybersecurity</h3>
-                <p>In today's interconnected digital world, cybersecurity stands as the bulwark against an ever-expanding array of cyber threats. From malicious hackers to sophisticated malware, the need for robust cybersecurity measures has never been more critical. As a first-year Network Security student passionate about safeguarding digital assets, let's delve into the fundamentals of cybersecurity and its pivotal role in protecting information.</p>
-                <img src="https://i.postimg.cc/jdR32DYz/everydays-june-2018.jpg#ff6915" alt="Gallery Image 3">
-            </article>
-            <!-- Add more blog posts here -->
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <h3>Name:</h3>
-            <p>Marie Joy De Guzman</p>
-            <h4>Address:</h4>
-            <p>Cauayan City Isabela, Union purok 7</p>
-        </section>
-    </main>
-    <aside>
-        <h2>Sidebar</h2>
-        
-        
-    </aside>
-    <footer>
-        <p>&copy; 2024 My Personal Blog Created with the help of my partner.</p>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
+    <div class="container">
+        <div class="content">
+            <h1>Our Vision</h1>
+            <p>Empowering Global Minds through Free Education</p>
+            <p>Our vision is to revolutionize access to education by providing free, high-quality learning resources to individuals around the world. We strive to break down barriers to knowledge and foster an inclusive learning environment where everyone has the opportunity to achieve their full potential.</p>
             
-            if (menuToggle && nav) {
-                menuToggle.addEventListener('click', () => {
-                    nav.classList.toggle('showing');
-                });
+            <h1>Our Mission</h1>
+            <p>Transforming Education with Accessibility and Excellence</p>
+            <p>Our mission is to deliver exceptional educational content and support without financial constraints. By leveraging innovative technology and a dedicated network of educators, we offer comprehensive learning experiences that are accessible to all. We are committed to fostering a global community of learners and educators who are united by a shared goal of advancing knowledge and personal growth.</p>
+            
+            <div class="highlight">
+                <h2>Completely Free Education</h2>
+                <p>All our resources and support are provided at no cost. We believe that quality education should be accessible to everyone, without any financial barriers.</p>
+            </div>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSecDyoBcj2X19-5RdvIySsMijSDIWPihLIzqmuNHrRgplq45w/viewform?usp=sf_link" class="register-button" target="_blank">Register Now</a>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <div class="testimonial-container" id="testimonialContainer">
+                <div class="testimonial">
+                    <p>"This platform has been a game changer for me. The resources are top-notch and the support is fantastic." - Anonymous</p>
+                </div>
+                <div class="testimonial">
+                    <p>"I’m grateful for the opportunity to learn without any financial burden. The materials are very helpful." - Anonymous</p>
+                </div>
+                <div class="testimonial">
+                    <p>"The free education provided here is a blessing. The support team is always available to help with any questions." - Anonymous</p>
+                </div>
+                <div class="testimonial">
+                    <p>"A wonderful initiative! I've learned so much thanks to the comprehensive materials and support." - Anonymous</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Highly recommended for anyone looking to learn without financial constraints. The quality is exceptional." - Anonymous</p>
+                </div>
+                <!-- Add more testimonials as needed -->
+            </div>
+            <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Albert Lawson Institute of Free Education. All rights reserved.</p>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <p>We use cookies to ensure you get the best experience on our website.</p>
+        <button onclick="acceptCookies()">Got it!</button>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookieBanner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        }
+
+        window.onload = function() {
+            if (localStorage.getItem('cookiesAccepted') === 'true') {
+                document.getElementById('cookieBanner').style.display = 'none';
             }
+        };
 
-            const links = document.querySelectorAll('nav ul li a');
-            links.forEach(link => {
-                link.addEventListener('click', event => {
-                    event.preventDefault();
-                    const sectionId = link.getAttribute('href').substring(1);
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        window.scrollTo({
-                            top: section.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial');
+        const totalSlides = slides.length;
 
-            // Initialize gallery animation
-            let currentIndex = 0;
-            const images = document.querySelectorAll('.gallery img');
-            const totalImages = images.length;
+        function showSlide(index) {
+            const container = document.getElementById('testimonialContainer');
+            const slideWidth = slides[0].offsetWidth;
+            container.style.transform = `translateX(${-index * slideWidth}px)`;
+        }
 
-            const changeImage = () => {
-                images[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % totalImages;
-                images[currentIndex].classList.add('active');
-            };
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
 
-            setInterval(changeImage, 3000); // Change image every 3 seconds
-        });
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
     </script>
 </body>
 </html>
